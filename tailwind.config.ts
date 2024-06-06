@@ -11,7 +11,10 @@ const config: Config = {
       colors: {
         darkGeneral: "#0d0d0d",
         accentColor: "#29cc8d"
-      }
+      },
+      fontFamily: {
+        delusion: ['var(--font-delusion)'],
+      },
     },
   },
   plugins: [],
