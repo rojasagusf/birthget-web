@@ -19,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-darkGeneral">
-      <body className={`${inter.className} ${delusionFont.variable} min-h-screen p-6 max-w-screen-xl mx-auto my-0 flex flex-col justify-start items-center`}>
+    <html lang="en" className="bg-darkGeneral scroll-smooth">
+      <body className={`${inter.className} ${delusionFont.variable} max-h-screen max-w-screen-xl p-6 mx-auto my-0 flex flex-col justify-start items-center`}>
         {children}
       </body>
     </html>
