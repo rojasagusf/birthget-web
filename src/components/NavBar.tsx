@@ -1,7 +1,11 @@
-import Link from "next/link";
+'use client';
+import { Link } from 'next-view-transitions'
 import Image from "next/image";
 import closeIcon from '@/assets/close.svg';
 import GeneralButton from "./GeneralButton";
+import { signOut, useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import spinner from '@/assets/spinner.svg';
 
 interface NavProps {
     reference: React.RefObject<HTMLInputElement | HTMLDivElement>;
@@ -10,6 +14,9 @@ interface NavProps {
 }
 
 const NavBar: React.FC<NavProps> = ({ reference, hide, setHide }) => {
+  const {data: session, status} = useSession();
+  const router = useRouter();
+
     return (
         <nav className={`w-80 h-screen fixed top-0 ${hide ? '-right-96' : 'right-0'} bg-[#030202] z-50 pl-12 transition-all duration-700 p-4`} ref={reference}>
             <header className="flex justify-end items-center p-2">
@@ -19,24 +26,34 @@ const NavBar: React.FC<NavProps> = ({ reference, hide, setHide }) => {
             </header>
             <ul className="flex flex-col gap-4 text-white">
                 <li className="font-bold flex items-center before:block before:absolute before:left-6 before:w-3 before:h-4 before:rounded-full before:bg-accentColor text-accentColor">
-                    <Link onClick={() => setHide(true)} href={'#'}>Home</Link>
+                    <Link onClick={() => setHide(true)} href={'/landing'}>Home</Link>
                 </li>
                 <li className="hover:text-accentColor">
-                    <Link onClick={() => setHide(true)} href={'#about'}>About</Link>
+                    <Link onClick={() => setHide(true)} href={'/landing#about'}>About</Link>
                 </li>
-                <li className="hover:text-accentColor">
-                    <Link onClick={() => setHide(true)} href={'#contact'}>Contact</Link>
-                </li>
-                <li className="mt-6 hover:text-accentColor">
-                  <Link onClick={() => setHide(true)} href={'/login'}>
-                    <GeneralButton label="Login" type="secondary"/>
-                  </Link>
-                </li>
-                <li>
-                  <Link onClick={() => setHide(true)} href={'/register'}>
-                    <GeneralButton label="Get started" type="primary"/>
-                  </Link>
-                </li>
+                {
+                  status === 'loading' ? <Image src={spinner} width={25} height={25} alt='Spinner' /> :
+                  session ? (
+                    <>
+                      <GeneralButton type="primary" label='Dashboard' action={() => router.push('/dashboard/overview')} />
+                      <GeneralButton type="secondary" label='Logout' action={() => signOut()} />
+                    </>
+                )
+                : (
+                  <>
+                    <li className="mt-6 hover:text-accentColor">
+                      <Link onClick={() => setHide(true)} href={'/login'}>
+                        <GeneralButton type="secondary" label="Login" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link onClick={() => setHide(true)} href={'/register'}>
+                        <GeneralButton type="primary" label="Get Started" />
+                      </Link>
+                    </li>
+                  </>
+                )
+                }
             </ul>
         </nav>
     );
