@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import localFont from 'next/font/local'
-import Header from "@/components/Header";
 import { ViewTransitions } from 'next-view-transitions'
+import SessionAuthProvider from "@/context/SessionAuthProvider";
 
 const delusionFont = localFont({ src: './../assets/fonts/delusiondisplay-regular.otf', variable: '--font-delusion' })
 
@@ -22,12 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <ViewTransitions>
-      <html lang="en" className="bg-darkGeneral scroll-smooth">
-        <body className={`${inter.className} ${delusionFont.variable} max-h-screen max-w-screen-xl p-6 mx-auto my-0 flex flex-col justify-start items-center overflow-x-hidden`}>
-          <Header />
-          {children}
-        </body>
-      </html>
+      <SessionAuthProvider>
+        <html lang="en" className="bg-darkGeneral scroll-smooth" >
+          <body className={`${inter.className} ${delusionFont.variable} max-h-screen max-w-screen-xl mx-auto my-0 overflow-x-hidden`}>
+            {children}
+          </body>
+        </html>
+      </SessionAuthProvider>
     </ViewTransitions>
   );
 }
