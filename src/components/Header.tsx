@@ -3,7 +3,7 @@ import Image from "next/image";
 import hamburgerIcon from '@/assets/Menu.svg'
 import { useEffect, useRef, useState } from "react";
 import Nav from "@/components/NavBar";
-import Link from 'next/link';
+import { Link } from 'next-view-transitions'
 import Links from "./Links";
 import {motion} from 'framer-motion';
 
@@ -23,10 +23,10 @@ export default function Header(){
 
     return (
         <header className="flex justify-between items-center w-full p-2">
-          <Link href={'/'}>
+          <Link href={'/landing'}>
             <motion.h1
               whileHover={{rotate: -1.1}}
-              className="text-[#fafafa] font-delusion text-sm"
+              className="text-[#fafafa] font-delusion text-sm duration-150"
             >Birth<span className="text-accentColor">get</span></motion.h1>
           </Link>
           <motion.button
