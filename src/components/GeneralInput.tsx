@@ -1,4 +1,4 @@
-import { Inputs } from "@/types/inputs";
+import { Inputs } from "@/types/types";
 import { UseFormRegister } from "react-hook-form";
 
 interface IGeneralInput {
