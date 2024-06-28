@@ -38,15 +38,14 @@ export default function Landing() {
       </main>
       <section id="about" className="bg-accentColor w-screen relative">
         <Image className="w-screen h-20 absolute top-0 -my-1 select-none" src={wave} width={100} height={100} alt="wave" />
-        <h2 className="text-darkGeneral mt-24 mb-16 text-2xl font-bold text-center font-delusion tracking-widest">About Us</h2>
+        <h2 className="text-darkGeneral mt-24 mb-14 text-2xl font-bold text-center font-delusion tracking-widest">About Us</h2>
         <section className="flex flex-col justify-center items-center gap-6 p-6 md:flex-row flex-wrap">
           {aboutInfo.map((info, index) => {
             return <AboutCard title={info.title} description={info.description} key={index} />;
           })}
         </section>
       </section>
-
-      <footer className="bg-darkGeneral w-full p-6 relative flex flex-col justify-center items-start gap-6 md:flex-row md:justify-between md:items-start md:min-h-56">
+      <footer className="bg-darkGeneral w-full py-8 relative flex flex-col justify-center items-start gap-6 md:flex-row md:justify-between md:items-start md:min-h-56">
         <section>
           <Link href={'/'}>
             <h1 className="text-[#fafafa] font-delusion text-sm duration-150 mb-2">Birth<span className="text-accentColor">get</span></h1>
@@ -58,7 +57,7 @@ export default function Landing() {
 
         <section>
           <h4 className="text-white font-bold mb-4 border-b-accentColor border-b-2">Links</h4>
-          <ul className="flex flex-col justify-center items-start gap-2">
+          <ul className="flex flex-col justify-center items-start gap-1">
             <li className="text-white hover:text-accentColor duration-150">
               <Link href={'/landing'}>Home</Link>
             </li>
