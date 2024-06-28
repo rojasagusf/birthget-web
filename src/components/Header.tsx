@@ -22,7 +22,7 @@ export default function Header(){
     });
 
     return (
-        <header className="flex justify-between items-center w-full p-2">
+        <header className="flex justify-between items-center w-full p-4">
           <Link href={'/landing'}>
             <motion.h1
               whileHover={{rotate: -1.1}}

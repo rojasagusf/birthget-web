@@ -24,7 +24,7 @@ export default function RootLayout({
     <ViewTransitions>
       <SessionAuthProvider>
         <html lang="en" className="bg-darkGeneral scroll-smooth" >
-          <body className={`${inter.className} ${delusionFont.variable} max-h-screen max-w-screen-xl mx-auto my-0 overflow-x-hidden`}>
+          <body className={`${inter.className} ${delusionFont.variable} mx-auto my-0 overflow-x-hidden`}>
             {children}
           </body>
         </html>
