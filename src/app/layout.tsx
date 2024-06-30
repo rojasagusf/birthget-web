@@ -4,6 +4,7 @@ import "./globals.css";
 import localFont from 'next/font/local'
 import { ViewTransitions } from 'next-view-transitions'
 import SessionAuthProvider from "@/context/SessionAuthProvider";
+import { CursorVariantProvider } from "@/context/CursorVariantProvider";
 
 const delusionFont = localFont({ src: './../assets/fonts/delusiondisplay-regular.otf', variable: '--font-delusion' })
 
@@ -23,11 +24,13 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <SessionAuthProvider>
-        <html lang="en" className="bg-darkGeneral scroll-smooth" >
-          <body className={`${inter.className} ${delusionFont.variable} mx-auto my-0 overflow-x-hidden`}>
-            {children}
-          </body>
-        </html>
+        <CursorVariantProvider>
+          <html lang="en" className="bg-darkGeneral scroll-smooth" >
+            <body className={`${inter.className} ${delusionFont.variable} mx-auto my-0 overflow-x-hidden`}>
+              {children}
+            </body>
+          </html>
+        </CursorVariantProvider>
       </SessionAuthProvider>
     </ViewTransitions>
   );
