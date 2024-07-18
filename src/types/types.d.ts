@@ -1,11 +1,11 @@
-export type friendInputs = {
-  name: string;
-  birthdate: Date;
+export interface friendInputs {
+  name: string
+  birthdate: Date
 }
 
-export type Inputs = {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
+export interface Inputs {
+  name: string
+  email: string
+  password: string
+  confirmPassword: string
 }
