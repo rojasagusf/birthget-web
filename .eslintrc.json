@@ -31,7 +31,7 @@
     "max-len": [
       "warn",
       {
-        "code": 80
+        "code": 200
       }
     ],
     "indent": [
@@ -60,7 +60,8 @@
         "ts": "never",
         "tsx": "never"
       }
-    ]
+    ],
+    "react/require-default-props": "off"
   },
   "settings": {
    "import/resolver": {
