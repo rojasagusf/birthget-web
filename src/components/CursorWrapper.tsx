@@ -1,29 +1,30 @@
-'use client';
-import useMouse from "@react-hook/mouse-position";
-import React, { useRef, useState, cloneElement, ReactElement, isValidElement, useContext } from "react";
-import { motion } from 'framer-motion';
-import { cursorVariantContext } from "@/context/CursorVariantProvider";
+'use client'
 
-export default function CursorWrapper({
-  children,
+import useMouse from '@react-hook/mouse-position'
+import React, { useRef, useContext } from 'react'
+import { motion } from 'framer-motion'
+import { cursorVariantContext } from '@/context/CursorVariantProvider'
+
+export default function CursorWrapper ({
+  children
 }: Readonly<{
-  children: React.ReactNode;
-}>) {
-  const context = useContext(cursorVariantContext);
-  const ref = useRef(null);
+  children: React.ReactNode
+}>): JSX.Element {
+  const context = useContext(cursorVariantContext)
+  const ref = useRef(null)
   const mouse = useMouse(ref, {
     enterDelay: 0,
     leaveDelay: 0
-  });
-  let mouseXPosition = 0;
-  let mouseYPosition = 0;
+  })
+  let mouseXPosition = 0
+  let mouseYPosition = 0
 
   if (mouse.x !== null && mouse.clientX !== null) {
-    mouseXPosition = mouse.clientX;
+    mouseXPosition = mouse.clientX
   }
 
   if (mouse.y !== null && mouse.clientY !== null) {
-    mouseYPosition = mouse.clientY;
+    mouseYPosition = mouse.clientY
   }
 
   const variants = {
@@ -32,12 +33,12 @@ export default function CursorWrapper({
       y: mouseYPosition + 70,
       backgroundColor: '#29cc8d',
       transition: {
-        type: "spring",
+        type: 'spring',
         mass: 0.3
       },
       opacity: 1,
       height: 50,
-      width: 50,
+      width: 50
     },
     text: {
       height: 150,
@@ -45,66 +46,66 @@ export default function CursorWrapper({
       x: mouseXPosition - 70,
       y: mouseYPosition + 20,
       backgroundColor: '#29cc8d',
-      opacity: .8,
+      opacity: 0.8
     },
     invert: {
       x: mouseXPosition - 25,
       y: mouseYPosition + 70,
       backgroundColor: '#0d0d0d',
       transition: {
-        type: "spring",
+        type: 'spring',
         mass: 0.3
       },
       opacity: 1,
       height: 50,
-      width: 50,
+      width: 50
     },
     button: {
       x: mouseXPosition - 60,
       y: mouseYPosition + 70,
       backgroundColor: 'transparent',
       transition: {
-        type: "spring",
+        type: 'spring',
         mass: 0.3
       },
       opacity: 1,
       height: 60,
-      width: 150,
+      width: 150
     },
     link: {
       x: mouseXPosition - 25,
       y: mouseYPosition + 70,
       backgroundColor: '#29cc8d',
       transition: {
-        type: "spring",
+        type: 'spring',
         mass: 0.3
       },
       opacity: 1,
       height: 20,
-      width: 20,
+      width: 20
     },
     arrow: {
       x: mouseXPosition - 35,
       y: mouseYPosition + 60,
       backgroundColor: 'transparent',
       transition: {
-        type: "spring",
+        type: 'spring',
         mass: 0.3
       },
       opacity: 1,
       height: 80,
-      width: 80,
-    },
+      width: 80
+    }
   }
 
   const spring = {
-    type: "spring",
+    type: 'spring',
     stiffness: 500,
     damping: 28
-  };
+  }
 
-  if (!context) {
-    throw new Error('No context provided');
+  if (context === undefined) {
+    throw new Error('No context provided')
   }
 
   return (
@@ -119,5 +120,5 @@ export default function CursorWrapper({
         {children}
       </div>
     </div>
-  );
+  )
 }

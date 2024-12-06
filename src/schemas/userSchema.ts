@@ -47,3 +47,23 @@ export const userLoginSchema = z.object({
       message: 'Password must be at least 6 characters long'
     })
 })
+
+export const userPatchSchema = z.object({
+  name: z
+    .string()
+    .min(3, {
+      message: 'Name must be greater than 3 characters long'
+    })
+    .max(200, {
+      message: 'Name must be less than 200 characters long'
+    }),
+  email: z
+    .string()
+    .email({
+      message: 'Please enter a valid email address'
+    }),
+  cellphone: z
+    .string()
+    .min(10)
+    .max(10)
+})

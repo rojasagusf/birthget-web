@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-export default function Error(message: string) {
+export default function Error (message: string): JSX.Element {
   return (
     <section>
       {message}

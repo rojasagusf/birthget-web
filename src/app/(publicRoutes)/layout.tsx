@@ -1,15 +1,15 @@
-import CursorWrapper from "@/components/CursorWrapper";
-import Header from "@/components/Header";
+import CursorWrapper from '@/components/CursorWrapper'
+import Header from '@/components/Header'
 
-export default function PublicLayout({
-  children,
+export default function PublicLayout ({
+  children
 }: Readonly<{
-  children: React.ReactNode;
-}>) {
+  children: React.ReactNode
+}>): JSX.Element {
   return (
     <CursorWrapper>
       <Header />
       {children}
     </CursorWrapper>
-  );
+  )
 }

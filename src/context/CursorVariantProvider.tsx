@@ -1,21 +1,34 @@
-'use client';
-import React, { Dispatch, SetStateAction, createContext, useState } from 'react';
+'use client'
+
+import React, {
+  type Dispatch,
+  type SetStateAction,
+  createContext,
+  useMemo,
+  useState
+} from 'react'
 
 interface CursorVariantContextType {
-  value: string;
-  setValue: Dispatch<SetStateAction<string>>;
+  value: string
+  setValue: Dispatch<SetStateAction<string>>
 }
 
-const cursorVariantContext = createContext<CursorVariantContextType | undefined>(undefined);
+const cursorVariantContext = createContext<
+CursorVariantContextType | undefined
+>(undefined)
 
-const CursorVariantProvider = ({ children }: {children: React.ReactNode}) => {
-  const [value, setValue] = useState<string>("default");
+function CursorVariantProvider (
+  { children }: { children: React.ReactNode }
+): JSX.Element {
+  const [value, setValue] = useState<string>('default')
+
+  const valueData = useMemo(() => ({ value, setValue }), [value])
 
   return (
-    <cursorVariantContext.Provider value={{ value, setValue }}>
+    <cursorVariantContext.Provider value={valueData}>
       {children}
     </cursorVariantContext.Provider>
-  );
-};
+  )
+}
 
-export { cursorVariantContext, CursorVariantProvider };
+export { cursorVariantContext, CursorVariantProvider }

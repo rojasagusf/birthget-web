@@ -8,4 +8,6 @@ export interface Inputs {
   email: string
   password: string
   confirmPassword: string
+  cellphone?: number
+  source?: string
 }
